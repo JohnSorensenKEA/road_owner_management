@@ -10,4 +10,14 @@ public class TemplateController {
     public String index(){
         return "index";
     }
+
+    @GetMapping("/om")
+    public String about(){
+        return "about";
+    }
+
+    @GetMapping("/dashboard") //TODO: Find a better danish word
+    public String dashboard(){
+        return "dashboard";
+    }
 }
