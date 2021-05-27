@@ -23,7 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorize -> {
+        http
+                //CSRF er disabled for at kunne sende post requests. Med det deaktiveret er der stor sikkerheds "fejl"
+                //for at undgå skal post request sende en CSRF token med, men haringen anelse hvad eller hvordan XD
+                .csrf().disable()
+                .authorizeRequests(authorize -> {
             authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/uploadFiles","/example1/upload/file", "/uploadFiles","/uploadFiles/**","/error","/error/**").permitAll()
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")

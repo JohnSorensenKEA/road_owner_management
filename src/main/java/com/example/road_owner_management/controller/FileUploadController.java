@@ -23,9 +23,8 @@ public class FileUploadController {
 
     //method 1 the one we use
 
-    @GetMapping(value= "/uploadFiles")
+    @PostMapping(value= "/uploadFiles")
     public ResponseEntity<Object> fileUpload(@RequestParam("file")MultipartFile file) throws IOException, SQLException {
-        System.out.println("test den kommer igennem");
 
         //folder where files get stored
         String path = "filearchive";
