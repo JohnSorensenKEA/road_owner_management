@@ -19,43 +19,43 @@ import java.sql.SQLException;
 @RestController
 public class FileUploadController {
 
-    //method 1
 
-    @PostMapping("/uploadFiles")
+
+    //method 1 the one we use
+
+    @GetMapping(value= "/uploadFiles")
     public ResponseEntity<Object> fileUpload(@RequestParam("file")MultipartFile file) throws IOException, SQLException {
         System.out.println("test den kommer igennem");
 
-        String testDir = "C:\\Users\\Anker-PC\\Documents\\test\\";
-        String dir = "../resources/static/files/public/";
+        //folder where files get stored
+        String path = "filearchive";
+        File directory = new File(path);
+        if(!directory.exists()){
+            if(directory.mkdir()){
+                System.out.println("folder has been made");
+            } else{
+                System.out.println("folder didnt get made");
+            }
+        } else{
+            System.out.println("folder already exists");
+        }
 
-        File myFile = new File(testDir+file.getOriginalFilename());
+        //file handling
+
+        File myFile = new File(path+"/"+file.getOriginalFilename());
+
         myFile.createNewFile();
         FileOutputStream fos = new FileOutputStream(myFile);
+        //blob not used, but might be if its needed
         Blob blob = new SerialBlob(file.getBytes());
 
         fos.write(file.getBytes());
         fos.close();
 
-        System.out.println("file uploaded" + file.getOriginalFilename() + "blob: " + blob);
+        //System.out.println("file uploaded" + file.getOriginalFilename() + "blob: " + blob);
         return new ResponseEntity<Object>("The file has been uploaded", HttpStatus.OK);
     }
 
-    //method 2
-
-    @PostMapping(value = "/example1/upload/file",
-            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE} )
-    public ResponseEntity<String> uploadSingleFile(MultipartFile file) throws IOException, SQLException {
-        System.out.println("test det virker");
-        File myFile = new File("../resources/static/files/public/"+file.getOriginalFilename());
-        myFile.createNewFile();
-        FileOutputStream fos = new FileOutputStream(myFile);
-        Blob blob = new SerialBlob(file.getBytes());
-
-        fos.write(file.getBytes());
-        fos.close();
-        return ResponseEntity.ok("Success");
-    }
 
     //method 3
 

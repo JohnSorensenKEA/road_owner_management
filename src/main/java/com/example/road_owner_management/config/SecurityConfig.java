@@ -24,11 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests(authorize -> {
-            authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/uploadFile","/example1/upload/file").permitAll()
+            authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/uploadFiles","/example1/upload/file", "/uploadFiles","/uploadFiles/**","/error","/error/**").permitAll()
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")
                     .mvcMatchers("/api/admin/**").hasAuthority("ADMIN")
-                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**", "/uploadFile","/example1/upload/file").permitAll()
+                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**", "/uploadFiles","/uploadFiles/**","/example1/upload/file", "/upload","/error","/error/**").permitAll()
                     .mvcMatchers("/files/members/**").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
 
         })
