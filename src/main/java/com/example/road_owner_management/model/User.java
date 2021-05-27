@@ -4,10 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     private String email;
@@ -18,6 +20,9 @@ public class User {
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private Set<Authority> authorities;
+
+    @OneToOne(mappedBy = "user")
+    private Member member;
 
     private boolean accountNonExpired = true;
 

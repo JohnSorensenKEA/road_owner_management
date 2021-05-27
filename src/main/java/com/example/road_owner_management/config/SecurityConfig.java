@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")
                     .mvcMatchers("/api/admin/**").hasAuthority("ADMIN")
-                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**").permitAll()
+                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**").permitAll()
                     .mvcMatchers("/files/members/**").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
         })
                 .authorizeRequests()

@@ -8,16 +8,11 @@ public class TemplateController {
 
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "public/index";
     }
 
     @GetMapping("/om")
     public String about(){
-        return "about";
-    }
-
-    @GetMapping("/dashboard") //TODO: Find a better danish word
-    public String dashboard(){
-        return "dashboard";
+        return "public/about";
     }
 }
