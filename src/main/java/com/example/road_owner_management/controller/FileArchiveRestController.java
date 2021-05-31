@@ -9,17 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialBlob;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
-public class FileUploadController {
-
-
+public class FileArchiveRestController {
 
     //method 1 the one we use
 
@@ -43,8 +42,8 @@ public class FileUploadController {
 
         File myFile = new File(path+"/"+file.getOriginalFilename());
 
-        myFile.createNewFile();
         FileOutputStream fos = new FileOutputStream(myFile);
+
         //blob not used, but might be if its needed
         Blob blob = new SerialBlob(file.getBytes());
 
@@ -52,11 +51,10 @@ public class FileUploadController {
         fos.close();
 
         //System.out.println("file uploaded" + file.getOriginalFilename() + "blob: " + blob);
-        return new ResponseEntity<Object>("The file has been uploaded", HttpStatus.OK);
+        return new ResponseEntity<>("The file has been uploaded", HttpStatus.OK);
     }
 
-
-    //method 3
+    //method 2 blob if we would store in DB
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file ) throws IOException, SQLException {
@@ -65,6 +63,50 @@ public class FileUploadController {
 
         System.out.println("blob: "+fileAsBlob);
         return "blob: "+fileAsBlob;
+    }
+
+    //Get all files
+    @GetMapping("/getAllFiles")
+    public List<String> getAllFiles(){
+        File folder = new File("filearchive");
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<String> fileNames = new ArrayList<>();
+
+
+        for (File listOfFile : listOfFiles) {
+            fileNames.add(listOfFile.getName());
+        }
+
+
+
+        System.out.println(fileNames);
+        return fileNames;
+    }
+
+    //Download file
+
+    String folderPath="filearchive/";
+
+    @RequestMapping("/file/{fileName}")
+    @ResponseBody
+    public void show(@PathVariable("fileName") String fileName, HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "attachment; filename=" +fileName);
+        response.setHeader("Content-Transfer-Encoding", "binary");
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+            FileInputStream fis = new FileInputStream(folderPath+fileName);
+            int len;
+            byte[] buf = new byte[1024];
+            while((len = fis.read(buf)) > 0) {
+                bos.write(buf,0,len);
+            }
+            bos.close();
+            response.flushBuffer();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+
+        }
     }
 
 

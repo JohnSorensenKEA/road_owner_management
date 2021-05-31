@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/fileArchiveStyle.css" type="text/css">
 </head>
 <body>
 <script src="/js/fileArchive/fileArchive.js" type="text/javascript"></script>
-    <div id="masterDiv">
-        <input type="file" id="fileToUpload" name="file">
-        <button onclick="test()">Klik her test</button>
+<script src="/js/fileArchive/fileArchiveBuild.js" type="text/javascript" ></script>
+    <div id="uploadDiv">
+        <div id="uploadIDiv"><input type="file" id="fileToUpload" name="file"></div>
+        <div id="uploadBtn"><button onclick="upload()">Upload</button></div>
+    </div>
+
+    <div id="test">
+
     </div>
 </body>
 </html>
