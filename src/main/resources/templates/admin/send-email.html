@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Email</title>
+    <script src="js/sendEmails/sendEmails.js"></script>
+</head>
+<body>
+
+<div id="master-div">
+    <div id="subject-field-div">
+        <p>Subject: <input name="Subject" id="subject-input"></p>
+    </div>
+    <div id="message-field-div">
+        <p>Message: <textarea name="message" id="message-textarea"></textarea><button onclick="sendEmail()">Send email</button></p>
+    </div>
+    <div id="select-box-div">
+        <label for="members-list"></label>
+        <select id="members-list" multiple>
+
+        </select>
+
+    </div>
+    <div id="members-div">
+
+    </div>
+</div>
+
+</body>
+</html>
