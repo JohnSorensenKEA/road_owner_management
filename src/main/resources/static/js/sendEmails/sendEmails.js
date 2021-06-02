@@ -59,6 +59,8 @@ async function f() {
             // option.value = members[i].user.email;
             option.className = "optionclass"
             option.innerHTML = members[i].ownerName;
+            option.style.margin = "2px";
+            let br = document.createElement("br");
             let temp = false;
             option.onclick = function(){
                 if(!temp) {
@@ -74,12 +76,13 @@ async function f() {
                 }
             };
             membersList2.appendChild(option);
+            membersList2.appendChild(br);
             console.log(i);
         }
     }
 
 
-    console.log(members[0].user.email);
+    // console.log(members[0].user.email);
 }
 
 let selected = [];
@@ -90,7 +93,8 @@ function addToSelected(email){
 
 }
 
-function sendEmail(){
+async function sendEmail(){
+    let temp;
     email.message = document.getElementById("message-textarea").value;
     email.subject = document.getElementById("subject-input").value;
     email.recipients = selected;
@@ -98,8 +102,17 @@ function sendEmail(){
 
     body1 = JSON.stringify(email);
     postRequest.body = body1;
-    fetch(postUrl, postRequest);
+    await fetch(postUrl, postRequest).
+    then(response => temp = response);
     console.log(email);
+    console.log(temp.ok);
+
+    if(temp.ok){
+        alert("Email er sendt");
+    }else{
+        alert("Email er ikke sendt");
+    }
+    location.reload();
 }
 
 

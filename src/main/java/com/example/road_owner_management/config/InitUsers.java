@@ -2,9 +2,11 @@ package com.example.road_owner_management.config;
 
 import com.example.road_owner_management.model.Authority;
 import com.example.road_owner_management.model.Member;
+import com.example.road_owner_management.model.Suggestion;
 import com.example.road_owner_management.model.User;
 import com.example.road_owner_management.repository.AuthorityRepository;
 import com.example.road_owner_management.repository.MemberRepository;
+import com.example.road_owner_management.repository.SuggestionRepository;
 import com.example.road_owner_management.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -29,11 +31,15 @@ public class InitUsers implements CommandLineRunner {
     @Autowired
     MemberRepository memberRepository;
 
+    @Autowired
+    SuggestionRepository suggestionRepository;
+
     @Override
     public void run(String... args) throws Exception {
         authorities();
         users();
         members();
+        suggestions();
     }
 
     public void authorities(){
@@ -56,10 +62,10 @@ public class InitUsers implements CommandLineRunner {
         Set<Authority> memberAuthoritySet = new HashSet<>();
         memberAuthoritySet.add(authorityRepository.getOne(2));
 
-        User member1 = new User("Bob@mail.dk", passwordEncoder.encode("b0b"), "12345678");
+        User member1 = new User("goobyplsing@gmail.com", passwordEncoder.encode("b0b"), "12345678");
         member1.setAuthorities(memberAuthoritySet);
 
-        User member2 = new User("Gert@mail.dk", passwordEncoder.encode("g3rt"), "11223344");
+        User member2 = new User("paramyr2@hotmail.com", passwordEncoder.encode("g3rt"), "11223344");
         member2.setAuthorities(memberAuthoritySet);
 
         User member3 = new User("Q", passwordEncoder.encode("Q"), "63513684");
@@ -91,5 +97,11 @@ public class InitUsers implements CommandLineRunner {
         member4 = memberRepository.getOne(4);
         member4.setUser(userRepository.getOne(2));
         memberRepository.save(member4);
+    }
+
+    public void suggestions(){
+        Suggestion sug = new Suggestion("Emil Sorensen", "JEG VIL HAVE NUTELLA TIL ALLE GENERALFORSAMLINGER");
+
+        suggestionRepository.save(sug);
     }
 }
