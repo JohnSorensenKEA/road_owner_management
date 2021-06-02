@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <title>Send Email</title>
     <script src="js/sendEmails/sendEmails.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <script src="/js/navbar.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/i"><img src="/images/temp_logo_white.png" alt="Logo" width="150px;"></a>
 
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/om">Om os</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/files">A: Filarkiv</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/sendEmail">A: Send email</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/medlemmer">A: Medlemmer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Log ind</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log ud</a>
+        </li>
+
+    </ul>
+</nav>
 <div id="master-div" style="width: 100%; ">
-    <div style="float: left; border-right: 2px solid gray; padding-right: 10px">
+    <div style="float: left; border-right: 2px solid gray; padding-right: 10px; margin: 5px 0 0 10px;">
         <div id="subject-field-div">
             Subject:
             <br>
@@ -22,7 +52,7 @@
         </div>
         <br>
         <div id="button-div" style="padding-left: 109px">
-            <button onclick="sendEmail()">Send email</button>
+            <button onclick="sendEmail()" class="btn">Send email</button>
         </div>
     </div>
 

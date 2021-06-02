@@ -15,4 +15,7 @@ public class TemplateController {
     public String about(){
         return "public/about";
     }
+
+    @GetMapping("/i")
+    public String i(){return "public/indexR";}
 }
