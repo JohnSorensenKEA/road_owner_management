@@ -109,10 +109,11 @@ async function sendEmail(){
 
     if(temp.ok){
         alert("Email er sendt");
+        location.reload();
     }else{
         alert("Email er ikke sendt");
     }
-    location.reload();
+
 }
 
 
