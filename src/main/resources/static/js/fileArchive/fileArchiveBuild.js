@@ -21,11 +21,16 @@ function ListFileNamesTest(data){
 async function makeHTML(file){
     let masterdiv = document.getElementById("test");
     let tempdiv = document.createElement("div");
-    let tempA = document.createElement("a");
-    tempA.innerHTML = file;
-    tempA.href = "/file/"+file;
-    tempA.className = "fileA";
-    tempdiv.appendChild(tempA);
+    let downloadA = document.createElement("a");
+    let deleteA = document.createElement("a");
+    deleteA.innerHTML = " X ";
+    deleteA.className = "fileAdel";
+    deleteA.href = "/delFile/"+file;
+    downloadA.innerHTML = file;
+    downloadA.href = "/file/"+file;
+    downloadA.className = "fileA";
+    tempdiv.appendChild(deleteA);
+    tempdiv.appendChild(downloadA);
     masterdiv.appendChild(tempdiv);
     console.log("forloop: "+file);
 }

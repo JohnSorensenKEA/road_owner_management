@@ -1,3 +1,7 @@
+body{
+    text-align: center;
+}
+
 
 #uploadDiv{
     display: inline-block;
@@ -12,12 +16,17 @@
 #uploadBtn{
     text-align: center;
     margin-top:5px;
+    margin-bottom: 5px;
 }
 
-.fileA{
+.fileA,.fileAdel{
     text-decoration: none;
     color: black;
 }
 .fileA:hover{
     font-weight: bold;
+}
+.fileAdel:hover{
+    font-weight: bold;
+    color: red;
 }

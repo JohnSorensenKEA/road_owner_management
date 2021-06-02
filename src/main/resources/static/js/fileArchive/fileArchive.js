@@ -9,8 +9,13 @@ function upload(){
         body: formData
     }
 
-    fetch('/uploadFiles',postRequest)
-        .then(data => responseAlert(data));
+    if(document.getElementById("fileToUpload").value===""){
+        alert("Vælg venligst en fil");
+    } else{
+        fetch('/uploadFiles',postRequest)
+            .then(data => responseAlert(data));
+    }
+
 
 }
 
@@ -18,6 +23,8 @@ function responseAlert(data){
     if(data.status===200){
         alert("Din fil er blevet uploadet!");
         document.getElementById("fileToUpload").value=null;
+        document.getElementById("test").innerHTML = "";
+        fetchFiles();
     } else if(document.getElementById("fileToUpload").value===""){
         alert("Vælg venligst en fil");
     }

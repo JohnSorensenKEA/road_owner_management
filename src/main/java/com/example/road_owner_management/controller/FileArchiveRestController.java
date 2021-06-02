@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialBlob;
@@ -72,11 +73,9 @@ public class FileArchiveRestController {
         File[] listOfFiles = folder.listFiles();
         ArrayList<String> fileNames = new ArrayList<>();
 
-
         for (File listOfFile : listOfFiles) {
             fileNames.add(listOfFile.getName());
         }
-
 
 
         System.out.println(fileNames);
@@ -107,6 +106,23 @@ public class FileArchiveRestController {
             e.printStackTrace();
 
         }
+    }
+
+    //Delete file
+    //Couldve done a @DeleteRequest, but then I wouldnt be able to call it through an <a> tag with href
+    //so fast solution was just to return a RedirectView and do @RequestMapping
+
+    @RequestMapping("/delFile/{fileName}")
+    @ResponseBody
+    public RedirectView deleteFile(@PathVariable("fileName") String fileName){
+        String fileStr = "filearchive/" + fileName;
+        File fileToDel = new File(fileStr);
+        if(fileToDel.delete()){
+            System.out.println(fileName + " has been deleted");
+        }
+        //return new ResponseEntity<>(fileName, HttpStatus.OK);
+        return new RedirectView("/files");
+
     }
 
 
