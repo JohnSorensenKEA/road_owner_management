@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admin/member/")
-public class AdminMemberController {
+public class AdminMemberRestController {
 
     @Autowired
     MemberService memberService;

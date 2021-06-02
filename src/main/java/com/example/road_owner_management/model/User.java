@@ -1,5 +1,7 @@
 package com.example.road_owner_management.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,7 +16,9 @@ public class User {
 
     private String email;
     private String password;
+    private String telephoneNumber;
 
+    @JsonBackReference
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_authority",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
@@ -35,9 +39,10 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password) {
+    public User(String email, String password, String telephoneNumber) {
         this.email = email;
         this.password = password;
+        this.telephoneNumber = telephoneNumber;
     }
 
     public String getEmail() {
@@ -54,6 +59,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     public boolean isAccountNonExpired() {
@@ -94,5 +107,21 @@ public class User {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

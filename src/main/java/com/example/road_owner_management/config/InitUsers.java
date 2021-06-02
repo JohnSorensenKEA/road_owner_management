@@ -48,7 +48,7 @@ public class InitUsers implements CommandLineRunner {
         Set<Authority> adminAuthoritySet = new HashSet<>();
         adminAuthoritySet.add(authorityRepository.getOne(1));
 
-        User admin1 = new User("Admin", passwordEncoder.encode("root"));
+        User admin1 = new User("Admin", passwordEncoder.encode("root"), "");
         admin1.setAuthorities(adminAuthoritySet);
 
         userRepository.save(admin1);
@@ -56,13 +56,13 @@ public class InitUsers implements CommandLineRunner {
         Set<Authority> memberAuthoritySet = new HashSet<>();
         memberAuthoritySet.add(authorityRepository.getOne(2));
 
-        User member1 = new User("Bob@mail.dk", passwordEncoder.encode("b0b"));
+        User member1 = new User("Bob@mail.dk", passwordEncoder.encode("b0b"), "12345678");
         member1.setAuthorities(memberAuthoritySet);
 
-        User member2 = new User("Gert@mail.dk", passwordEncoder.encode("g3rt"));
+        User member2 = new User("Gert@mail.dk", passwordEncoder.encode("g3rt"), "11223344");
         member2.setAuthorities(memberAuthoritySet);
 
-        User member3 = new User("Q", passwordEncoder.encode("Q"));
+        User member3 = new User("Q", passwordEncoder.encode("Q"), "63513684");
         member3.setAuthorities(memberAuthoritySet);
 
         userRepository.save(member1);
