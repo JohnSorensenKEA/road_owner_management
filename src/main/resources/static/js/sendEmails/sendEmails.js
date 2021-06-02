@@ -57,7 +57,7 @@ async function f() {
         if(members[i].user != null) {
             let option = document.createElement("button");
             // option.value = members[i].user.email;
-            option.className = "optionclass"
+            option.className = "btn"
             option.innerHTML = members[i].ownerName;
             option.style.margin = "2px";
             let br = document.createElement("br");

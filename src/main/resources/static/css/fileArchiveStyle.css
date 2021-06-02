@@ -1,10 +1,12 @@
-body{
+#test{
     text-align: center;
 }
 
-
 #uploadDiv{
     display: inline-block;
+    width: 60%;
+    margin: 10px auto auto auto;
+    text-align: center;
 }
 
 #uploadIDiv{
@@ -25,8 +27,11 @@ body{
 }
 .fileA:hover{
     font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 .fileAdel:hover{
     font-weight: bold;
+    text-decoration: none;
     color: red;
 }

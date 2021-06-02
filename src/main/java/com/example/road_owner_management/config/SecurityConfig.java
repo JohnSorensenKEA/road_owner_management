@@ -28,11 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //for at undgå skal post request sende en CSRF token med, men haringen anelse hvad eller hvordan XD
                 .csrf().disable()
                 .authorizeRequests(authorize -> {
-            authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/uploadFiles","/example1/upload/file", "/uploadFiles","/uploadFiles/**","/error","/error/**").permitAll()
+            authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/error","/error/**").permitAll()
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")
-                    .mvcMatchers("/api/admin/**").hasAuthority("ADMIN")
-                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**", "/uploadFiles","/uploadFiles/**","/example1/upload/file", "/upload","/error","/error/**").permitAll()
+                    .mvcMatchers("/api/admin/**", "/uploadFiles","/uploadFiles/**","/files","/sendEmail").hasAuthority("ADMIN")
+                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**","/error","/error/**","/i").permitAll()
                     .mvcMatchers("/files/members/**").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
 
         })
