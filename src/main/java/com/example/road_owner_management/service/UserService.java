@@ -12,11 +12,15 @@ public interface UserService {
 
     User createUser(User user);
 
-    User updateUserEmail(User user);
+    User updateUser(User user);
 
     User updateUserPassword(User user);
 
     User updateUserAdmin(User user);
 
     boolean deleteUser(User user);
+
+    List<User> getNonAdmins();
+
+    String resetPassword(User user);
 }

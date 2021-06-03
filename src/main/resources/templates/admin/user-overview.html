@@ -2,60 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Medlems administration</title>
+    <title>Bruger administration</title>
     <link href="/css/member_overview_module.css" rel="stylesheet">
 </head>
 <body>
-<h1>Admin: Medlemmer</h1>
+<h1>Admin: Brugere</h1>
 <a href="/logout">Logout</a><span> | </span><a href="/login">login</a><span> | </span><a href="/">Index</a>
 <br><br>
-<input class="new-member-btn" type="button" value="Nyt medlem"><br><br>
+<input class="new-member-btn" type="button" value="Ny bruger"><br><br>
 <div class="grid-con">
     <div class="grid-item">
         <div class="overview"></div>
     </div>
     <div class="grid-item">
         <div class="Chosen">
-            <label class="chosen-label">Medlems id</label><br>
+            <label class="chosen-label">Bruger id</label><br>
             <input class="chosen-input member-id" type="text" disabled>
             <br><br>
-            <label class="chosen-label">Medlemsnummer</label><br>
+            <label class="chosen-label">Email</label><br>
             <input class="chosen-input member-number" type="text" disabled>
             <br><br>
-            <label class="chosen-label">Vejnavn</label><br>
+            <label class="chosen-label">Telefonnummer</label><br>
             <input class="chosen-input road-name" type="text" disabled>
             <br><br>
-            <label class="chosen-label">Vejnummer</label><br>
-            <input class="chosen-input road-number" type="text" disabled>
-            <br><br>
-            <label class="chosen-label">Ejernavn</label><br>
-            <input class="chosen-input owner-name" type="text" disabled>
-            <br><br>
-            <label class="chosen-label">Bruger</label><br>
-            <select class="user-select chosen-input" disabled></select>
-            <input class="user-remove-btn" type="button" value="Fjern" disabled>
-            <br><br>
-            <br>
             <input class="save-btn chosen-btn" type="button" value="Opdater" disabled>
             <input class="delete-btn chosen-btn" type="button" value="Slet" disabled>
+            <input class="reset-btn chosen-btn" type="button" value="Reset kodeord" disabled>
+            <span class="password-box"></span>
         </div>
     </div>
 </div>
 
 <div class="create-window" hidden>
-    <label>Medlemsnummer</label><br>
+    <label>Email</label><br>
     <input class="new-member-number new-input" type="text"><br><br>
-    <label>Vejnavn</label><br>
+    <label>Telefonnummer</label><br>
     <input class="new-road-name new-input" type="text"><br><br>
-    <label>Vejnummer</label><br>
-    <input class="new-road-number new-input" type="text"><br><br>
-    <label>Ejer navn</label><br>
-    <input class="new-owner-name new-input" type="text"><br><br>
+    <br><br>
     <br>
     <input class="create-btn" type="button" value="Opret">
     <input class="cancel-btn" type="button" value="Annuller">
 </div>
 
-<script src="/js/member_overview_module.js"></script>
+<script src="/js/user_overview.js"></script>
 </body>
 </html>

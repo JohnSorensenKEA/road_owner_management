@@ -13,4 +13,9 @@ public class AdminTemplateController {
         return "admin/member-overview";
     }
 
+    @GetMapping("/users")
+    public String users(){
+        return "admin/user-overview";
+    }
+
 }

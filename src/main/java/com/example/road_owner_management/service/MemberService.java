@@ -16,4 +16,6 @@ public interface MemberService {
     Member updateMember(Member member);
 
     void deleteMember(Member member);
+
+    Member removeMemberUser(Member member);
 }
