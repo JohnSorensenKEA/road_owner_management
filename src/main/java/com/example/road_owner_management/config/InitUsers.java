@@ -1,18 +1,13 @@
 package com.example.road_owner_management.config;
 
-import com.example.road_owner_management.model.Authority;
-import com.example.road_owner_management.model.Member;
-import com.example.road_owner_management.model.Suggestion;
-import com.example.road_owner_management.model.User;
-import com.example.road_owner_management.repository.AuthorityRepository;
-import com.example.road_owner_management.repository.MemberRepository;
-import com.example.road_owner_management.repository.SuggestionRepository;
-import com.example.road_owner_management.repository.UserRepository;
+import com.example.road_owner_management.model.*;
+import com.example.road_owner_management.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,12 +29,16 @@ public class InitUsers implements CommandLineRunner {
     @Autowired
     SuggestionRepository suggestionRepository;
 
+    @Autowired
+    EventRepository eventRepository;
+
     @Override
     public void run(String... args) throws Exception {
         authorities();
         users();
         members();
         suggestions();
+        events();
     }
 
     public void authorities(){
@@ -103,5 +102,21 @@ public class InitUsers implements CommandLineRunner {
         Suggestion sug = new Suggestion("Emil Sorensen", "JEG VIL HAVE NUTELLA TIL ALLE GENERALFORSAMLINGER");
 
         suggestionRepository.save(sug);
+    }
+
+    public void events(){
+        Event event1 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+        Event event2 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+        Event event3 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+        Event event4 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+        Event event5 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+        Event event6 = new Event("Taco Tuesday", "Tacos on a Tuesday", LocalDateTime.of(2021,6,8,13,0,0), LocalDateTime.of(2021,6,8,14,0,0));
+
+        eventRepository.save(event1);
+        eventRepository.save(event2);
+        eventRepository.save(event3);
+        eventRepository.save(event4);
+        eventRepository.save(event5);
+        eventRepository.save(event6);
     }
 }

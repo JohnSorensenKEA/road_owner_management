@@ -1,0 +1,42 @@
+.sec-con{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    margin: 0 50px 0 50px;
+}
+.create-con{
+    border-right: solid black 2px;
+    padding: 20px;
+}
+.event-list{
+    padding: 20px;
+    background-color: white;
+    overflow-y: scroll;
+    height: 700px;
+}
+.event-dates{
+    font-size: 11px;
+    color: #1f1f1f;
+    margin-top: 2px;
+}
+.event{
+    background-color: #ded9d9;
+    padding: 10px;
+    width: 500px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+body{
+    background-color: #fafafa;
+}
+.event-delete-btn{
+
+}
+.event-title{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.dash-con{
+    display: inline-grid;
+    grid-template-columns: 30% 40% 30%;
+    width: 100%;
+}
