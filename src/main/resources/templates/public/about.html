@@ -3,11 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Om</title>
+    <link rel="stylesheet" href="/css/about.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <script src="/js/navbar.js"></script>
 </head>
 <body>
-<h1>About us site</h1>
-<a href="/">Forside</a><br><br>
-<img src="/files/public/img.png" alt="Billede">
 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/i"><img src="/images/temp_logo_white.png" alt="Logo" width="150px;"></a>
+
+    <!-- Links -->
+    <ul class="navbar-nav nav" style="float:left;">
+        <li class="nav-item">
+            <a class="nav-link" href="/om">Om os</a>
+        </li>
+        <li class="nav-item" id="fileArchiveLi" style="display:none;">
+            <a class="nav-link" id="fileArchiveA"></a>
+        </li>
+        <li class="nav-item" id="sendEmailLi" style="display:none;">
+            <a class="nav-link" id="sendEmailA"></a>
+        </li>
+        <li class="nav-item" id="membersLi" style="display:none;">
+            <a class="nav-link" id="membersA"></a>
+        </li>
+
+    </ul>
+    <ul class="ml-auto nav navbar-nav">
+        <li class="nav-item navbar-right">
+            <a class="nav-link" id="login-out"></a>
+        </li>
+    </ul>
+
+</nav>
+<br>
+<img class="map" src="/images/matrikel_kort.png" alt="Matrikelkort"><br>
+<span class="map-desc">Matrikelkort</span>
+<br><br><br>
+<div class="info-box">
+    <h2>Om os</h2>
+    <p>What is Lorem Ipsum?
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+        make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+        including versions of Lorem Ipsum.
+
+        Why do we use it?
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking
+        at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).</p>
+    <h2>Kontakt</h2>
+    <p>Email: example@mail.dk</p>
+</div>
+<br><br>
+<div class="file-link-box">
+    <h2>Dokumenter</h2>
+    <span>• </span><a href="/files/public/file_example_pdf_1.pdf" download="file_example_pdf_1">Download vigtig fil 1 her</a><br><br>
+    <span>• </span><a href="/files/public/file_example_pdf_2.pdf" download="file_example_pdf_2">Download vigtig fil 2 her</a><br><br>
+    <span>• </span><a href="/files/public/file_example_pdf_3.pdf" download="file_example_pdf_3">Download vigtig fil 3 her</a><br><br>
+    <span>• </span><a href="/files/public/file_example_pdf_4.pdf" download="file_example_pdf_4">Download vigtig fil 4 her</a>
+</div>
 </body>
 </html>
