@@ -4,3 +4,8 @@
     border: 1px solid black;
     padding: 3px 6px;
 }
+#login-out{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
