@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forslag</title>
+    <script src="js/suggestions/suggestions.js"></script>
+</head>
+<body>
+
+<div id="master-div" style="width: 100%; ">
+    <div style="float: left; border-right: 2px solid gray; padding-right: 10px; margin: 5px 0 0 10px;">
+        <div id="suggestion-field-div">
+            Forslag:
+            <br>
+            <textarea name="suggestion" id="suggestion-textarea" style="height: 200px; width: 300px"></textarea>
+        </div>
+        <br>
+        <div id="button-div" style="padding-left: 109px">
+            <button onclick="postSuggestion()" class="btn">Indsend forslag</button>
+        </div>
+    </div>
+
+    <div style="float: left; padding-left: 10px;">
+        <div id="suggestions-div">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

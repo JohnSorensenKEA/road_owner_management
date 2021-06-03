@@ -32,26 +32,9 @@ async function f() {
     then(response => response.json()).
     then(data => data.forEach(member => members.push(member)))
 
-    let membersList = document.getElementById("members-list");
     let membersList2 = document.getElementById("members-div");
 
-    // let option = document.createElement("option");
-    // option.value = members[0].user.email;
-    // option.innerHTML = members[0].user.email + " " + members[0].ownerName;
-    // membersList.appendChild(option);
 
-    console.log(members.length);
-
-
-    // for(let i = 0; i<members.length; i++){
-    //     if(members[i].user != null) {
-    //         let option = document.createElement("option");
-    //         option.value = members[i].user.email;
-    //         option.innerHTML = members[i].ownerName;
-    //         membersList.appendChild(option);
-    //         console.log(i);
-    //     }
-    // }
 
     for(let i = 0; i<members.length; i++){
         if(members[i].user != null) {
@@ -72,24 +55,18 @@ async function f() {
                     option.style.backgroundColor = "";
                     selected.splice(selected.indexOf(members[i].user.email), 1);
                     temp = false;
-                    console.log(selected);
                 }
             };
             membersList2.appendChild(option);
             membersList2.appendChild(br);
-            console.log(i);
         }
     }
-
-
-    // console.log(members[0].user.email);
 }
 
 let selected = [];
 
 function addToSelected(email){
     selected.push(email);
-    console.log(selected);
 
 }
 
@@ -104,8 +81,6 @@ async function sendEmail(){
     postRequest.body = body1;
     await fetch(postUrl, postRequest).
     then(response => temp = response);
-    console.log(email);
-    console.log(temp.ok);
 
     if(temp.ok){
         alert("Email er sendt");
