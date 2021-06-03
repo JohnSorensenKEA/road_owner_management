@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")
                     .mvcMatchers("/api/admin/**", "/uploadFiles","/uploadFiles/**","/files","/sendEmail").hasAuthority("ADMIN")
-                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**","/error","/error/**","/i").permitAll()
+                    .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**","/error","/error/**","/i", "/loggedIn").permitAll()
                     .mvcMatchers("/files/members/**").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
 
         })

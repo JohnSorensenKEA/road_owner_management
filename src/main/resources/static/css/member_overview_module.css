@@ -1,0 +1,46 @@
+.member-con{
+    background-color: #fff791;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 2px 5px 2px;
+}
+.grid-con{
+    display: grid;
+    grid-template-columns: 350px 1000px;
+}
+.grid-item{
+
+}
+.overview{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 600px;
+    margin-left: 20px;
+    border: solid 2px;
+    border-radius: 2px;
+}
+.Chosen{
+    overflow-y: scroll;
+    margin-left: 50px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border: solid 2px;
+    border-radius: 2px;
+    height: 580px;
+}
+.info-text{
+    margin: 4px 0 4px 0;
+    font-size: 15px;
+}
+.chosen-label{
+    font-weight: bold;
+}
+.member-con-selected{
+    background-color: deepskyblue;
+}
+.clickable{
+    cursor: pointer;
+}
+.clickable > *{
+    cursor: pointer;
+}
