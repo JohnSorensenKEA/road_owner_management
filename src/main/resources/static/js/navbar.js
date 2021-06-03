@@ -1,3 +1,28 @@
-import "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
-import "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js";
-import "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js";
+
+let getRequest ={
+    method: "GET",
+    headers: {
+        "content-type": "application/json"
+    }
+}
+
+function loggedIn(){
+    let isLoggedIn;
+    fetch("/loggedIn",getRequest)
+        .then(response => response.json())
+        .then(data => buildHTMLnav(data));
+}
+
+function buildHTMLnav(loggedIn){
+    let li = document.getElementById("login-out");
+    if(!loggedIn){
+        li.innerText = "Log ind";
+        li.href = "/login";
+    } else if(loggedIn){
+        li.innerText = "Log ud";
+        li.href = "/logout";
+    }
+}
+
+
+loggedIn();
