@@ -18,4 +18,9 @@ public class TemplateController {
 
     @GetMapping("/i")
     public String i(){return "public/indexR";}
+
+    @GetMapping("/admin/events")
+    public String adminEvents(){
+        return "admin/event";
+    }
 }
