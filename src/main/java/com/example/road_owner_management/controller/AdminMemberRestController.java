@@ -44,4 +44,10 @@ public class AdminMemberRestController {
         Member updatedMember = memberService.updateMember(member);
         return new ResponseEntity<>(updatedMember, HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/deleteMember", consumes = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteMember(@RequestBody Member member){
+        memberService.deleteMember(member);
+    }
 }

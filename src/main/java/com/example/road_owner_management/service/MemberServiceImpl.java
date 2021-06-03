@@ -2,6 +2,7 @@ package com.example.road_owner_management.service;
 
 import com.example.road_owner_management.model.Member;
 import com.example.road_owner_management.repository.MemberRepository;
+import com.example.road_owner_management.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,12 @@ public class MemberServiceImpl implements MemberService{
 
     public Member updateMember(Member member){
         return memberRepository.save(member);
+    }
+
+    public void deleteMember(Member member){
+        Optional<Member> optMember = memberRepository.findById(member.getId());
+        if (optMember.isPresent()){
+            memberRepository.delete(optMember.get());
+        }
     }
 }
