@@ -35,3 +35,8 @@ body{
     margin-bottom: 0;
     padding-bottom: 0;
 }
+.dash-con{
+    display: inline-grid;
+    grid-template-columns: 30% 40% 30%;
+    width: 100%;
+}
