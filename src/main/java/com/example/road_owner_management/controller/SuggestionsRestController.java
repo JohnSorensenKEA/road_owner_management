@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 @RestController
@@ -27,23 +29,6 @@ public class SuggestionsRestController {
 
     @GetMapping("/allSuggestions")
     public List<Suggestion> allSuggestions(){
-
-//        -------------------------------Find logged in user-----------------------------------
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-//        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        String loggedInUser = "paramyr2@hotmail.com";
-
-        List<Member> memberList = memberRepository.findAll();
-
-
-        for(int i = 0; i<memberList.size(); i++){
-            if(memberList.get(i).getUser().getEmail().equals(loggedInUser)){
-                System.out.println(memberList.get(i).getOwnerName());
-                break;
-            }
-        }
-
-//      ----------------------------------------------------------------------------------------
         return suggestionRepository.findAll();
     }
 
@@ -51,11 +36,7 @@ public class SuggestionsRestController {
     @PostMapping(value = "/newSuggestion", consumes = "application/json")
     public ResponseEntity<Suggestion> newSuggestion(@RequestBody Suggestion suggestion){
         String loggedInName;
-
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-//        String loggedInUser = "paramyr2@hotmail.com";
 
         List<Member> memberList = memberRepository.findAll();
 
@@ -79,6 +60,48 @@ public class SuggestionsRestController {
     public HttpStatus deleteAllSuggestion(){
         suggestionRepository.deleteAll();
         return HttpStatus.OK;
+    }
+
+
+    String folderPath="suggestionsDownload/suggestions.txt";
+
+    @GetMapping("/suggestions/download")
+    @ResponseBody
+    public void downloadSuggestions(HttpServletResponse response) {
+
+        List<Suggestion> suggestionList = suggestionRepository.findAll();
+        String suggestions = "";
+
+        try {
+            FileWriter fileWriter = new FileWriter(folderPath);
+            for (int i = 0; i < suggestionList.size(); i++) {
+                suggestions += suggestionList.get(i).toString() + "\n\n";
+            }
+            fileWriter.write(suggestions);
+            fileWriter.close();
+        }catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+
+
+
+        response.setHeader("Content-Disposition", "attachment; filename=suggestions");
+        response.setHeader("Content-Transfer-Encoding", "binary");
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+            FileInputStream fis = new FileInputStream(folderPath);
+            int len;
+            byte[] buf = new byte[1024];
+            while((len = fis.read(buf)) > 0) {
+                bos.write(buf,0,len);
+            }
+            bos.close();
+            response.flushBuffer();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+
+        }
     }
 
 }

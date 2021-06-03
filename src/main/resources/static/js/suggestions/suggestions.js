@@ -28,6 +28,7 @@ let suggestionJson = {
 }
 
 let getUrl = "http://localhost:8080/allSuggestions";
+let downloadUrl = "http://localhost:8080/suggestions/download"
 let getLoggedInUrl = "http://localhost:8080/loggedInRole"
 let postUrl = "http://localhost:8080/newSuggestion";
 let deleteUrl ="http://localhost:8080/deleteAllSuggestions";
@@ -70,15 +71,27 @@ async function f() {
 
 function createDeleteButton(data){
     if(data==="[ADMIN]"){
+        let buttonDiv = document.getElementById("button-div");
+        let downloadSuggestionsButton = document.createElement("button");
+        downloadSuggestionsButton.innerHTML = "Download alle forslag";
+        downloadSuggestionsButton.className = "btn";
+        downloadSuggestionsButton.style.marginRight = "5px"
+        downloadSuggestionsButton.onclick = function(){
+            // fetch(downloadUrl, getRequest);
+            window.location.replace(downloadUrl);
+        }
+
         let deleteAllSuggestionsButton = document.createElement("button");
         deleteAllSuggestionsButton.innerHTML = "Slet alle forslag";
+        deleteAllSuggestionsButton.className = "btn";
         deleteAllSuggestionsButton.onclick = function(){
             if(confirm("Skal alle forslag slettes?")){
                 fetch(deleteUrl, deleteRequest);
                 location.reload();
             }
         }
-        document.getElementById("button-div").appendChild(deleteAllSuggestionsButton);
+        buttonDiv.appendChild(downloadSuggestionsButton);
+        buttonDiv.appendChild(deleteAllSuggestionsButton);
     }
 }
 

@@ -58,4 +58,11 @@ public class Suggestion {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Medlem='" + author + '\'' +
+                ", Forslag='" + suggestion + '\'' +
+                '}';
+    }
 }
