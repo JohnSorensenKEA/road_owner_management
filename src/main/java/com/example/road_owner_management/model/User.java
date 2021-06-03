@@ -16,6 +16,7 @@ public class User {
     private Integer id;
 
     private String email;
+    @JsonIgnore
     private String password;
     private String telephoneNumber;
 

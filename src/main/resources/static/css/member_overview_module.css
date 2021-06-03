@@ -1,5 +1,5 @@
 .member-con{
-    background-color: #fff791;
+    background-color: #e0e0e0;
     border-radius: 5px;
     padding: 10px;
     margin: 5px 2px 5px 2px;
@@ -36,11 +36,21 @@
     font-weight: bold;
 }
 .member-con-selected{
-    background-color: deepskyblue;
+    background-color: #fff987;
 }
 .clickable{
     cursor: pointer;
 }
 .clickable > *{
     cursor: pointer;
+}
+.create-window{
+    position: absolute;
+    z-index: 1;
+    left: 30px;
+    top: 142px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: solid black 1px;
 }

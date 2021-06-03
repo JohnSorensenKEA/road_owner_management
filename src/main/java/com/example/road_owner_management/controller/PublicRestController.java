@@ -11,4 +11,11 @@ public class PublicRestController {
     public boolean loggedIn(Authentication authentication){
         return authentication != null;
     }
+
+    @GetMapping("/loggedInRole")
+    public String loggedInRole(Authentication authentication){
+        String loggedInRole = authentication.getAuthorities().toString();
+        System.out.println(loggedInRole);
+        return loggedInRole;
+    }
 }

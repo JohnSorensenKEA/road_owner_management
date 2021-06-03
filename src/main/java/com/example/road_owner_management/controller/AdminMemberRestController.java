@@ -50,4 +50,10 @@ public class AdminMemberRestController {
     public void deleteMember(@RequestBody Member member){
         memberService.deleteMember(member);
     }
+
+    @PutMapping(value = "/removeUser", consumes = "application/json")
+    public ResponseEntity<Member> removeUser(@RequestBody Member member){
+        Member updatedMember = memberService.removeMemberUser(member);
+        return new ResponseEntity<>(updatedMember, HttpStatus.OK);
+    }
 }
