@@ -37,10 +37,25 @@ function buildHTMLnav(role){
     let sendEmailA = document.getElementById("sendEmailA");
     let membersLi = document.getElementById("membersLi")
     let membersA = document.getElementById("membersA")
+    let usersLi = document.getElementById("usersLi");
+    let usersA = document.getElementById("usersA");
+    let eventsLi = document.getElementById("eventsLi");
+    let eventsA = document.getElementById("eventsA");
+    let dashboardLi = document.getElementById("dashboardLi");
+    let dashboardA = document.getElementById("dashboardA");
+    let suggestionsLi = document.getElementById("suggestionsLi");
+    let suggestionsA = document.getElementById("suggestionsA");
+
+
+
     if(role==="[ADMIN]"){
+        suggestionsLi.style.display = "inherit";
+        suggestionsA.href="/suggestions";
+        suggestionsA.innerText="M: Forslag";
+
         fileArchiveLi.style.display = "inherit";
         fileArchiveA.href="/files";
-        fileArchiveA.innerText="A: Filarkiv";
+        fileArchiveA.innerText="M: Filarkiv";
 
         sendEmailLi.style.display = "inherit";
         sendEmailA.href="/sendEmail";
@@ -50,6 +65,26 @@ function buildHTMLnav(role){
         membersA.href="/admin/medlemmer";
         membersA.innerText="A: Medlemmer";
 
+        usersLi.style.display = "inherit";
+        usersA.href="/admin/users";
+        usersA.innerText = "A: Brugere";
+
+        eventsLi.style.display = "inherit";
+        eventsA.href ="/admin/events";
+        eventsA.innerText = "A: Begivenheder";
+
+    } else if(role==="[USER]"){
+        suggestionsLi.style.display = "inherit";
+        suggestionsA.href="/suggestions";
+        suggestionsA.innerText="M: Forslag";
+
+        dashboardLi.style.display = "inherit";
+        dashboardA.href="/dashboard";
+        dashboardA.innerText="M: Begivenheder";
+
+        fileArchiveLi.style.display = "inherit";
+        fileArchiveA.href="/files";
+        fileArchiveA.innerText="M: Filarkiv";
     }
 }
 

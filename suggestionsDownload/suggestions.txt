@@ -1,8 +1,2 @@
-Medlem='Emil Sorensen', Forslag='JEG VIL HAVE NUTELLA TIL ALLE GENERALFORSAMLINGER'}
-
-Medlem='Bob Ibsen', Forslag='Og cola'}
-
-Medlem='Bob Ibsen', Forslag='og chips måske'}
-
-Medlem='Bob Ibsen', Forslag='og så det ja'}
+Medlem='Bob Ibsen', Forslag='el jeffe'}
 

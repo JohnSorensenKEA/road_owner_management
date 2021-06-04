@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <title>Bruger administration</title>
     <link href="/css/member_overview_module.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <script src="/js/navbar.js"></script>
 </head>
 <body>
-<h1>Admin: Brugere</h1>
-<a href="/logout">Logout</a><span> | </span><a href="/login">login</a><span> | </span><a href="/">Index</a>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/"><img src="/images/temp_logo_white.png" alt="Logo" width="150px;"></a>
+
+    <!-- Links -->
+    <ul class="navbar-nav nav" style="float:left;">
+        <li class="nav-item">
+            <a class="nav-link" href="/om">Om os</a>
+        </li>
+        <li class="nav-item" id="suggestionsLi" style="display:none;">
+            <a class="nav-link" id="suggestionsA"></a>
+        </li>
+        <li class="nav-item" id="fileArchiveLi" style="display:none;">
+            <a class="nav-link" id="fileArchiveA"></a>
+        </li>
+        <li class="nav-item" id="sendEmailLi" style="display:none;">
+            <a class="nav-link" id="sendEmailA"></a>
+        </li>
+        <li class="nav-item" id="membersLi" style="display:none;">
+            <a class="nav-link" id="membersA"></a>
+        </li>
+        <li class="nav-item" id="usersLi" style="display:none;">
+            <a class="nav-link" id="usersA"></a>
+        </li>
+        <li class="nav-item" id="eventsLi" style="display:none;">
+            <a class="nav-link" id="eventsA"></a>
+        </li>
+        <li class="nav-item" id="dashboardLi" style="display:none;">
+            <a class="nav-link" id="dashboardA"></a>
+        </li>
+
+
+    </ul>
+    <ul class="ml-auto nav navbar-nav">
+        <li class="nav-item navbar-right">
+            <a class="nav-link" id="login-out"></a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<h1 class="header">Admin: Brugere</h1>
 <br><br>
 <input class="new-member-btn" type="button" value="Ny bruger"><br><br>
 <div class="grid-con">

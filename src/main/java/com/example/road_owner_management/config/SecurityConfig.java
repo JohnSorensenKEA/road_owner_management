@@ -31,9 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             authorize.antMatchers("/", "/om", "/webjars/**", "/login", "/resources/**","/error","/error/**").permitAll()
 
                     .mvcMatchers("/dashboard", "/api/user/**").hasAuthority("USER")
-                    .mvcMatchers("/api/admin/**", "/uploadFiles","/uploadFiles/**","/files","/sendEmail").hasAuthority("ADMIN")
+                    .mvcMatchers("/api/admin/**", "/uploadFiles","/uploadFiles/**","/sendEmail","/delFile/**").hasAuthority("ADMIN")
                     .mvcMatchers("/files/public/**", "/css/**", "/images/**", "/js/**", "/api/public/**","/error","/error/**","/i", "/loggedIn").permitAll()
-                    .mvcMatchers("/files/members/**", "/suggestions").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
+                    .mvcMatchers("/files/members/**", "/suggestions","/files").hasAnyAuthority("ADMIN", "USER"); //TODO: OPS, authority instead of role
 
         })
                 .authorizeRequests()
